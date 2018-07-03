@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1"></meta>
+<title>Ajax example</title>
+<title>Bootstrap Example</title>
+  <meta charset="utf-8"></meta>
+  <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></link>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>  
+<script>
+/* $(document).ready(function(){
+    $("#btn1").click(function(){
+    	$.get("get", function(data, status){
+            alert("Data: " + data + "\nStatus: " + status);
+        });
+    });
+});
+*/
+ $(document).ready(function() {
+	    var text_max = 3000;
+	    var default_text = "Hi! My name is Joanna. I will read any text you type here.";
+	    var char_remaining = " characters remaining (3000 maximum)";
+	    $('#textarea').val(default_text);
+	    var text_length = $('#textarea').val().length;
+        var text_remaining = text_max - text_length;
+	    $('#textarea_feedback').html(text_remaining + char_remaining);
+	    
+	    $('#textarea').keyup(function() {
+	        var text_length = $('#textarea').val().length;
+	        var text_remaining = text_max - text_length;
+	        $('#textarea_feedback').html(text_remaining + char_remaining);
+	    });
+	    
+	    $('#defaulttextbtn').click(function() {
+	         $('#textarea').val(default_text);
+	         var text_length = $('#textarea').val().length;
+	         var text_remaining = text_max - text_length;
+	         $('#textarea_feedback').html(text_remaining + char_remaining);
+	     });
+	    
+	    $('#cleartextbtn').click(function() {
+	        $('#textarea').val('');
+	        var text_length = $('#textarea').val().length;
+            var text_remaining = text_max - text_length;
+            $('#textarea_feedback').html(text_remaining + char_remaining);
+	     });	    
+	});
+function selectVoice(e){	
+	var html = '';
+	if(e == "1"){
+	$('#dropdownbtn').html("US English");
+	html += '<div class="form-check">';
+	html += '<input class="form-check-input" name="group100" type="radio" id="radio100" value="Salli">'
+	html += '<label class="form-check-label" for="radio100">Salli, Female</label>'
+	html += '</div>';
+	html += '<div class="form-check">';
+    html += '<input class="form-check-input" name="group100" type="radio" id="radio101" value="Matthew">'
+    html += '<label class="form-check-label" for="radio101">Matthew, Male</label>'
+    html += '</div>';
+    html += '<div class="form-check">';
+    html += '<input class="form-check-input" name="group100" type="radio" id="radio102" value="Kimberly">'
+    html += '<label class="form-check-label" for="radio102">Kimberly, Female</label>'
+    html += '</div>';
+    html += '<div class="form-check">';
+    html += '<input class="form-check-input" name="group100" type="radio" id="radio103" value="Kendra">'
+    html += '<label class="form-check-label" for="radio103">Kendra, Female</label>'
+    html += '</div>';
+    html += '<div class="form-check">';
+    html += '<input class="form-check-input" name="group100" type="radio" id="radio104" value="Justin">'
+    html += '<label class="form-check-label" for="radio104">Justin, Male</label>'
+    html += '</div>';
+    html += '<div class="form-check">';
+    html += '<input class="form-check-input" name="group100" type="radio" id="radio105" value="Joey">'
+    html += '<label class="form-check-label" for="radio105">Joey, Male</label>'
+    html += '</div>';
+    html += '<div class="form-check">';
+    html += '<input class="form-check-input" name="group100" type="radio" id="radio106" value="Joanna">'
+    html += '<label class="form-check-label" for="radio106">Joanna, Female</label>'
+    html += '</div>';
+    html += '<div class="form-check">';
+    html += '<input class="form-check-input" name="group100" type="radio" id="radio107" value="Ivy">'
+    html += '<label class="form-check-label" for="radio107">Ivy, Female</label>'
+    html += '</div>';
+	}else if(e == 2){
+		$('#dropdownbtn').html("Indian English");
+		html += '<div class="form-check">';
+	    html += '<input class="form-check-input" name="group100" type="radio" id="radio108" value="Raveena">'
+	    html += '<label class="form-check-label" for="radio108">Raveena, Female</label>'
+	    html += '</div>';
+	    html += '<div class="form-check">';
+	    html += '<input class="form-check-input" name="group100" type="radio" id="radio109" value="Aditi">'
+	    html += '<label class="form-check-label" for="radio109">Aditi, Female</label>'
+	    html += '</div>';
+	}else if(e == 3){
+		$('#dropdownbtn').html("British English");
+		html += '<div class="form-check">';
+        html += '<input class="form-check-input" name="group100" type="radio" id="radio110" value="Emma">'
+        html += '<label class="form-check-label" for="radio110">Raveena, Female</label>'
+        html += '</div>';
+        html += '<div class="form-check">';
+        html += '<input class="form-check-input" name="group100" type="radio" id="radio111" value="Brian">'
+        html += '<label class="form-check-label" for="radio111">Aditi, Male</label>'
+        html += '</div>';
+        html += '<div class="form-check">';
+        html += '<input class="form-check-input" name="group100" type="radio" id="radio112" value="Amy">'
+        html += '<label class="form-check-label" for="radio112">Aditi, Female</label>'
+        html += '</div>';
+	}else{
+		$('#dropdownbtn').html("Australian English");
+		html += '<div class="form-check">';
+        html += '<input class="form-check-input" name="group100" type="radio" id="radio113" value="Russell">'
+        html += '<label class="form-check-label" for="radio113">Raveena, Male</label>'
+        html += '</div>';
+        html += '<div class="form-check">';
+        html += '<input class="form-check-input" name="group100" type="radio" id="radio114" value="Nicole">'
+        html += '<label class="form-check-label" for="radio114">Aditi, Female</label>'
+        html += '</div>';
+	}
+	$("#checkbox").html(html);
+}
+
+</script>
+</head>
+<body>
+<!-- <input type="button" id="btn1" value="Click me..."> -->
+<div class="container">
+  <h2 style="border-bottom: 2px solid #cccccc">Text-To-Speech</h2><br/>
+  <h4 style="margin-top: -14px">Listen, customize, and download speech. Integrate when you're ready.</h4><br/>
+  <p>Type or paste your text in the window, choose your language and region, choose a voice, choose Listen to speech, and then integrate it into your applications and services.</p>
+
+  <ul class="nav nav-tabs">
+    <li class="active"><a data-toggle="tab" href="#plaintxt">Plain Text</a></li>
+    <li><a data-toggle="tab" href="#menu1">Menu 1</a></li>   
+  </ul>
+
+  <div class="tab-content">
+    <div id="plaintxt" class="tab-pane fade in active">
+      <textarea id="textarea" rows="5" maxlength="3000" style="padding: 7px 10px; width: 100%; border-radius: 4px; border: 1px solid #cccccc; font-size: 14px; margin-top: 10PX;" placeholder="Enter Plain Text..."></textarea>
+      <span id="textarea_feedback"></span>
+      <span style="margin-left: 662px;">
+      <button id="defaulttextbtn" style="background-color: transparent; border: 1px solid transparent; border-top-color: rgba(26, 26, 26, 0); text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75); color: #1166bb;"><span style="border-bottom-style: solid;">Show default text</span></button>
+      <button id="cleartextbtn" style="background-color: transparent; border: 1px solid transparent; border-top-color: rgba(26, 26, 26, 0); text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75); color: #1166bb;"><span style="border-bottom-style: solid;">Clear text</span></button>
+      </span>
+      <h4 style="font-family: Helvetica Neue, Roboto, Arial, sans-serif;">Language and Region</h4>
+      <h4 style="margin-top: -29px; margin-left: 272px; font-family: Helvetica Neue, Roboto, Arial, sans-serif;">Voice</h4>
+     <div class="dropdown" style="width: 193px;"> 
+     <button id="dropdownbtn" class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" style="width: 100%">Select language and region</button>
+     <ul class="dropdown-menu">
+      <li><a href="#" onclick="selectVoice(1);">US English</a></li>
+      <li><a href="#" onclick="selectVoice(2);">Indian English</a></li>
+      <li><a href="#" onclick="selectVoice(3);">British English</a></li>
+      <li><a href="#" onclick="selectVoice(4);">Australian English</a></li>
+     </ul>
+     </div>
+     <div id="checkbox" style="margin-top: -38px; margin-left: 270px; width: 193px;">
+     <span>Select Language and region...</span>     
+     </div>
+     <div style="margin-top: -16px; margin-left: 85%;">
+     <button class="btn btn-primary" type="button">Convert Text To Speech</button>
+     </div>
+    </div>
+    <div id="menu1" class="tab-pane fade">
+      <h3>Menu 1</h3>
+      <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+    </div>    
+  </div>
+</div>
+</body>
+</html>

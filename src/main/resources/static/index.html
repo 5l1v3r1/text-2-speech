@@ -2,22 +2,29 @@
 <html>
 <head>
 <meta charset="ISO-8859-1"></meta>
-<title>Ajax example</title>
-<title>Bootstrap Example</title>
+<title>Text To Speech</title>
   <meta charset="utf-8"></meta>
   <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></link>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>  
 <script>
-/* $(document).ready(function(){
-    $("#btn1").click(function(){
-    	$.get("get", function(data, status){
-            alert("Data: " + data + "\nStatus: " + status);
-        });
+ $(document).ready(function(){
+    $("#converttxttospeech").click(function(){
+    	console.log($("#textarea").val() +", "+$("input[name='group100']").val());
+    	var obj = {"plaintext": $("#textarea").val(), "voice": $("input[name='group100']").val()};
+    	 $.ajax({
+    	 url:"converttexttospeech",
+    	 type:"POST",
+    	 data:JSON.stringify(obj),
+    	 contentType:"application/json",
+    	 success: function(data){
+    		alert(data);
+    	 }
+    	});     	
     });
 });
-*/
+
  $(document).ready(function() {
 	    var text_max = 3000;
 	    var default_text = "Hi! My name is Joanna. I will read any text you type here.";
@@ -137,12 +144,13 @@ function selectVoice(e){
 
   <div class="tab-content">
     <div id="plaintxt" class="tab-pane fade in active">
-      <textarea id="textarea" rows="5" maxlength="3000" style="padding: 7px 10px; width: 100%; border-radius: 4px; border: 1px solid #cccccc; font-size: 14px; margin-top: 10PX;" placeholder="Enter Plain Text..."></textarea>
+      <textarea id="textarea" name="textarea" rows="5" maxlength="3000" style="padding: 7px 10px; width: 100%; border-radius: 4px; border: 1px solid #cccccc; font-size: 14px; margin-top: 10PX;" placeholder="Enter Plain Text..."></textarea>
       <span id="textarea_feedback"></span>
       <span style="margin-left: 662px;">
       <button id="defaulttextbtn" style="background-color: transparent; border: 1px solid transparent; border-top-color: rgba(26, 26, 26, 0); text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75); color: #1166bb;"><span style="border-bottom-style: solid;">Show default text</span></button>
       <button id="cleartextbtn" style="background-color: transparent; border: 1px solid transparent; border-top-color: rgba(26, 26, 26, 0); text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75); color: #1166bb;"><span style="border-bottom-style: solid;">Clear text</span></button>
       </span>
+      </div>
       <h4 style="font-family: Helvetica Neue, Roboto, Arial, sans-serif;">Language and Region</h4>
       <h4 style="margin-top: -29px; margin-left: 272px; font-family: Helvetica Neue, Roboto, Arial, sans-serif;">Voice</h4>
      <div class="dropdown" style="width: 193px;"> 
@@ -154,18 +162,15 @@ function selectVoice(e){
       <li><a href="#" onclick="selectVoice(4);">Australian English</a></li>
      </ul>
      </div>
-     <div id="checkbox" style="margin-top: -38px; margin-left: 270px; width: 193px;">
+     <div id="checkbox" style="margin-top: -38px; margin-left: 270px; width: 30%;">
      <span>Select Language and region...</span>     
      </div>
-     <div style="margin-top: -16px; margin-left: 85%;">
-     <button class="btn btn-primary" type="button">Convert Text To Speech</button>
-     </div>
+     <button id="converttxttospeech" class="btn btn-primary" style="margin-left: 960px; margin-top: -20px;" type="button">Convert Text To Speech</button>
     </div>
     <div id="menu1" class="tab-pane fade">
       <h3>Menu 1</h3>
       <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
     </div>    
-  </div>
 </div>
-</body>
+<body>
 </html>
